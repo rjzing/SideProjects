@@ -36,7 +36,10 @@
             this.tileWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.tileWindowMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeWindowMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeOpenAlbumsWindow = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeOpenWindowsWindow = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeAllAlbumsWindowCloseAlbum = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeByArtistWindowCloseAlbums = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeByAlbumWindowCloseAlbums = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.frmMainMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +90,7 @@
             this.tileWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tileWindowMenu,
             this.cascadeWindowMenu,
-            this.closeOpenAlbumsWindow,
+            this.closeOpenWindowsWindow,
             this.toolStripSeparator1});
             this.tileWindow.Name = "tileWindow";
             this.tileWindow.Size = new System.Drawing.Size(63, 20);
@@ -107,12 +110,37 @@
             this.cascadeWindowMenu.Text = "Cascade Windows";
             this.cascadeWindowMenu.Click += new System.EventHandler(this.cascadeWindowMenu_Click);
             // 
-            // closeOpenAlbumsWindow
+            // closeOpenWindowsWindow
             // 
-            this.closeOpenAlbumsWindow.Name = "closeOpenAlbumsWindow";
-            this.closeOpenAlbumsWindow.Size = new System.Drawing.Size(180, 22);
-            this.closeOpenAlbumsWindow.Text = "Close Open Albums";
-            this.closeOpenAlbumsWindow.Click += new System.EventHandler(this.closeOpenAlbumsWindow_Click);
+            this.closeOpenWindowsWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.closeAllAlbumsWindowCloseAlbum,
+            this.closeByArtistWindowCloseAlbums,
+            this.closeByAlbumWindowCloseAlbums});
+            this.closeOpenWindowsWindow.Name = "closeOpenWindowsWindow";
+            this.closeOpenWindowsWindow.Size = new System.Drawing.Size(180, 22);
+            this.closeOpenWindowsWindow.Text = "Close Windows";
+            this.closeOpenWindowsWindow.Click += new System.EventHandler(this.closeOpenAlbumsWindow_Click);
+            // 
+            // closeAllAlbumsWindowCloseAlbum
+            // 
+            this.closeAllAlbumsWindowCloseAlbum.Name = "closeAllAlbumsWindowCloseAlbum";
+            this.closeAllAlbumsWindowCloseAlbum.Size = new System.Drawing.Size(180, 22);
+            this.closeAllAlbumsWindowCloseAlbum.Text = "Close All Albums";
+            this.closeAllAlbumsWindowCloseAlbum.Click += new System.EventHandler(this.closeAllAlbumsWindowCloseAlbum_Click);
+            // 
+            // closeByArtistWindowCloseAlbums
+            // 
+            this.closeByArtistWindowCloseAlbums.Name = "closeByArtistWindowCloseAlbums";
+            this.closeByArtistWindowCloseAlbums.Size = new System.Drawing.Size(180, 22);
+            this.closeByArtistWindowCloseAlbums.Text = "Close by Artist";
+            this.closeByArtistWindowCloseAlbums.Click += new System.EventHandler(this.closeByArtistWindowCloseAlbums_Click);
+            // 
+            // closeByAlbumWindowCloseAlbums
+            // 
+            this.closeByAlbumWindowCloseAlbums.Name = "closeByAlbumWindowCloseAlbums";
+            this.closeByAlbumWindowCloseAlbums.Size = new System.Drawing.Size(180, 22);
+            this.closeByAlbumWindowCloseAlbums.Text = "Close by Album";
+            this.closeByAlbumWindowCloseAlbums.Click += new System.EventHandler(this.closeByAlbumWindowCloseAlbums_Click);
             // 
             // toolStripSeparator1
             // 
@@ -146,8 +174,11 @@
         private System.Windows.Forms.ToolStripMenuItem tileWindow;
         private System.Windows.Forms.ToolStripMenuItem tileWindowMenu;
         private System.Windows.Forms.ToolStripMenuItem cascadeWindowMenu;
-        private System.Windows.Forms.ToolStripMenuItem closeOpenAlbumsWindow;
+        private System.Windows.Forms.ToolStripMenuItem closeOpenWindowsWindow;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem closeAllAlbumsWindowCloseAlbum;
+        private System.Windows.Forms.ToolStripMenuItem closeByArtistWindowCloseAlbums;
+        private System.Windows.Forms.ToolStripMenuItem closeByAlbumWindowCloseAlbums;
     }
 }
 

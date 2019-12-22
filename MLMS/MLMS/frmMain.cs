@@ -83,6 +83,19 @@ namespace MLMS
                         Artists = tempArtists
                     };
                     tempSelectedFiles.Add(tempMP3);
+                    //if (!Program.openArtists.ContainsKey(tempArtists))
+                    //{
+                    
+                        //Program.openArtists.Add(tempArtists);
+                    //}
+                }
+                foreach (SmallClasses.MP3 selectedFile in tempSelectedFiles)
+                {
+                    if (!Program.openArtists.Contains(selectedFile.Artists))
+                    {
+                        Program.openArtists.Add(selectedFile.Artists);
+                        break;
+                    }
                 }
                 SmallClasses.SortTracks sorting = new SmallClasses.SortTracks();
                 tempSelectedFiles.Sort(sorting);
@@ -100,6 +113,10 @@ namespace MLMS
                     else
                     {
                         tempAlbum = individualAlbum.Key;
+                    }
+                    if (!Program.openAlbums.Contains(tempAlbum))
+                    {
+                        Program.openAlbums.Add(tempAlbum);
                     }
                     foreach (var tempFile in individualAlbum)
                     {
@@ -127,7 +144,7 @@ namespace MLMS
                     newChild.Text = tempArtists + " - " + tempAlbum;
                     newChild.MdiParent = this;
                     newChild.Show();
-                    Program.openAlbums.Add(newChild);
+                    Program.openChildren.Add(newChild);
 
                     Program.refreshDGVOnChild(individualAlbumTracks, newChild);
                     //newChild.dgvOutput.DataSource = null;
@@ -203,10 +220,50 @@ namespace MLMS
 
         private void closeOpenAlbumsWindow_Click(object sender, EventArgs e)
         {
-            foreach (frmChild closing in Program.openAlbums)
+
+        }
+
+        private void closeAllAlbumsWindowCloseAlbum_Click(object sender, EventArgs e)
+        {
+            foreach (frmChild closing in Program.openChildren)
             {
                 closing.Close();
                 closing.Dispose();
+            }
+            Program.openChildren.Clear();
+            Program.openArtists.Clear();
+        }
+
+        private void closeByArtistWindowCloseAlbums_Click(object sender, EventArgs e)
+        {
+            //foreach(frmChild closing in Program.openAlbums)
+            //{
+            //    string tempArtist;
+            //    tempArtist = closing.Text.Split('-')[0];
+            //    //if ()
+            //    //{
+
+            //    //}
+            //}
+            //foreach (string artist in Program.openArtists)
+            //{
+
+            //}
+            if (Program.openChildren.Count > 0 && Program.openArtists.Count > 0)
+            {
+                frmCloseBy closeByArtist = new frmCloseBy("CloseByArtist");
+                closeByArtist.MdiParent = this;
+                closeByArtist.Show();
+            }
+        }
+
+        private void closeByAlbumWindowCloseAlbums_Click(object sender, EventArgs e)
+        {
+            if (Program.openChildren.Count > 0 && Program.openAlbums.Count > 0)
+            {
+                frmCloseBy closeByArtist = new frmCloseBy("CloseByAlbum");
+                closeByArtist.MdiParent = this;
+                closeByArtist.Show();
             }
         }
     }

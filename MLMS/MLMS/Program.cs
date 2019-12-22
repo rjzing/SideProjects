@@ -9,12 +9,16 @@ namespace MLMS
     static class Program
     {
         public static string pcName;
-        public static List<frmChild> openAlbums;
+        public static List<frmChild> openChildren;
+        public static List<string> openArtists;
+        public static List<string> openAlbums;
         [STAThread]
         static void Main()
         {
             pcName = Environment.MachineName;
-            openAlbums = new List<frmChild>();
+            openChildren = new List<frmChild>();
+            openArtists = new List<string>();
+            openAlbums = new List<string>();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());

@@ -31,14 +31,20 @@ namespace MLMS
             {
                 frmChildNewAA.Text = txtArtist.Text + " - " + txtAlbum.Text;
                 frmChildNewAA.Show();
-                Program.openAlbums.Add(frmChildNewAA);
+                Program.openChildren.Add(frmChildNewAA);
+                if (!Program.openArtists.Contains(txtArtist.Text))
+                {
+                    Program.openArtists.Add(txtArtist.Text);
+                }
+                Program.openAlbums.Add(txtAlbum.Text);
                 this.Close();
             }
             else if (!string.IsNullOrEmpty(txtArtist.Text) && string.IsNullOrEmpty(txtAlbum.Text))
             {
                 frmChildNewAA.Text = txtArtist.Text + " - " + "Unknown Album";
                 frmChildNewAA.Show();
-                Program.openAlbums.Add(frmChildNewAA);
+                Program.openChildren.Add(frmChildNewAA);
+                Program.openArtists.Add(txtArtist.Text);
                 this.Close();
             }
             else
