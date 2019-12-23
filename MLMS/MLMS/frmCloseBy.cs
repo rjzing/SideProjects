@@ -20,7 +20,7 @@ namespace MLMS
             radBtns = new List<RadioButton>();
             InitializeComponent();
         }
-
+        //test desktop
         private void frmCloseBy_Load(object sender, EventArgs e)
         {
             //this.rbtn0.AutoSize = true;
