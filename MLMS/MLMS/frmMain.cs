@@ -144,7 +144,7 @@ namespace MLMS
                     newChild.Text = tempArtists + " - " + tempAlbum;
                     newChild.MdiParent = this;
                     newChild.Show();
-                    Program.openChildren.Add(newChild);
+                    //Program.openChildren.Add(newChild);
 
                     Program.refreshDGVOnChild(individualAlbumTracks, newChild);
                     //newChild.dgvOutput.DataSource = null;
@@ -165,7 +165,14 @@ namespace MLMS
 
                 }
             }
-
+            int openChildrenCount = MdiChildren.Count();
+            Program.openChildren = new frmChild[openChildrenCount];
+            Program.openChildren = MdiChildren.ToArray();
+            
+            //for (int counter = 0; counter < openChildrenCount; counter++)
+            //{
+            //    Program.openChildren[counter] = MdiChildren.ToArray();
+            //}
             //dgvOutput.DataSource = null;
             //dgvOutput.AutoResizeColumns();
             //dgvOutput.DataSource = selectedFiles;
@@ -204,7 +211,7 @@ namespace MLMS
         {
             frmNewArtist_Album addNewArtist_Album = new frmNewArtist_Album();
             addNewArtist_Album.MdiParent = this;
-            addNewArtist_Album._mainForm = this;
+            addNewArtist_Album._frmMain = this;
             addNewArtist_Album.Show();
         }
 
@@ -230,7 +237,7 @@ namespace MLMS
                 closing.Close();
                 closing.Dispose();
             }
-            Program.openChildren.Clear();
+            //Program.openChildren = null;
             Program.openArtists.Clear();
         }
 
@@ -249,9 +256,11 @@ namespace MLMS
             //{
 
             //}
-            if (Program.openChildren.Count > 0 && Program.openArtists.Count > 0)
+            if (Program.openChildren.Length > 0 && Program.openArtists.Count > 0)
+            //if(Program.openArtists.Count > 0)
             {
                 frmCloseBy closeByArtist = new frmCloseBy("CloseByArtist");
+                closeByArtist._frmMain = this;
                 closeByArtist.MdiParent = this;
                 closeByArtist.Show();
             }
@@ -259,9 +268,11 @@ namespace MLMS
 
         private void closeByAlbumWindowCloseAlbums_Click(object sender, EventArgs e)
         {
-            if (Program.openChildren.Count > 0 && Program.openAlbums.Count > 0)
+            if (Program.openChildren.Length > 0 && Program.openAlbums.Count > 0)
+            //if(Program.openAlbums.Count > 0)
             {
                 frmCloseBy closeByArtist = new frmCloseBy("CloseByAlbum");
+                closeByArtist._frmMain = this;
                 closeByArtist.MdiParent = this;
                 closeByArtist.Show();
             }
