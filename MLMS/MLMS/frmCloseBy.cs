@@ -158,12 +158,12 @@ namespace MLMS
                         toClose.Dispose();
                     }
                 }
-                for (int count = 0; count < Program.openChildren.Count; count++)
+            }
+            for (int count = 0; count < Program.openChildren.Count; count++)
+            {
+                if (Program.openChildren[count].Parent == null)
                 {
-                    if (Program.openChildren[count].Parent == null)
-                    {
-                        Program.openChildren.Remove(Program.openChildren[count]);
-                    }
+                    Program.openChildren.Remove(Program.openChildren[count]);
                 }
             }
             this.Close();
