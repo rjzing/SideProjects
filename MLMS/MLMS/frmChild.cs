@@ -99,5 +99,22 @@ namespace MLMS
                 //this.Text = artistToUse + " - " +;
             }
         }
+        private void frmChild_Focus(object sender, EventArgs e)
+        {
+            dgvOutput.Refresh();
+        }
+        private void frmChild_mdiActivate(object sender, EventArgs e)
+        {
+            dgvOutput.Refresh();
+        }
+        private void frmChild_MouseClick(object sender, EventArgs e)
+        {
+            //for (int rowCount = 0; rowCount < dgvOutput.RowCount; rowCount++)
+            //{
+            //    dgvOutput.AutoResizeRow(rowCount);
+            //}
+            dgvOutput.ScrollBars = ScrollBars.Vertical;
+            dgvOutput.Refresh();
+        }
     }
 }

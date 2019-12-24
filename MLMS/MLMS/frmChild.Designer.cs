@@ -39,11 +39,12 @@
             // dgvOutput
             // 
             this.dgvOutput.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOutput.Location = new System.Drawing.Point(50, 44);
+            this.dgvOutput.Location = new System.Drawing.Point(117, 98);
+            this.dgvOutput.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.dgvOutput.MultiSelect = false;
             this.dgvOutput.Name = "dgvOutput";
             this.dgvOutput.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOutput.Size = new System.Drawing.Size(671, 203);
+            this.dgvOutput.Size = new System.Drawing.Size(1566, 453);
             this.dgvOutput.TabIndex = 0;
             // 
             // frmChildMenuStrip
@@ -54,14 +55,15 @@
             this.frmChildOpenFileMenu});
             this.frmChildMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.frmChildMenuStrip.Name = "frmChildMenuStrip";
-            this.frmChildMenuStrip.Size = new System.Drawing.Size(800, 24);
+            this.frmChildMenuStrip.Padding = new System.Windows.Forms.Padding(14, 4, 0, 4);
+            this.frmChildMenuStrip.Size = new System.Drawing.Size(1867, 49);
             this.frmChildMenuStrip.TabIndex = 1;
             this.frmChildMenuStrip.Text = "menuStrip1";
             // 
             // frmChildOpenFileMenu
             // 
             this.frmChildOpenFileMenu.Name = "frmChildOpenFileMenu";
-            this.frmChildOpenFileMenu.Size = new System.Drawing.Size(48, 20);
+            this.frmChildOpenFileMenu.Size = new System.Drawing.Size(94, 41);
             this.frmChildOpenFileMenu.Text = "&Open";
             this.frmChildOpenFileMenu.Click += new System.EventHandler(this.frmChildOpenFileMenu_Click);
             // 
@@ -72,17 +74,22 @@
             // 
             // frmChild
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(800, 422);
+            this.ClientSize = new System.Drawing.Size(1867, 941);
             this.Controls.Add(this.dgvOutput);
             this.Controls.Add(this.frmChildMenuStrip);
+            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.MinimizeBox = false;
             this.Name = "frmChild";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmChild";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            //this.GotFocus += new System.EventHandler(this.frmChild_Focus);
+            //this.MdiChildActivate += new System.EventHandler(this.frmChild_mdiActivate);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.frmChild_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutput)).EndInit();
             this.frmChildMenuStrip.ResumeLayout(false);
             this.frmChildMenuStrip.PerformLayout();
