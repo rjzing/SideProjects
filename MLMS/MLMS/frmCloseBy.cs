@@ -117,28 +117,28 @@ namespace MLMS
                 //        Program.openAlbums.Remove(album);
                 //    }
                 //}
-                int openChildren = Program.openChildren.Length;
-                //int openChildren = 0;
-                for (int count = 0; count < openChildren; count++)
-                {
-                    //if (string.IsNullOrEmpty(Program.openChildren[count].Text))
-                    //{
-                    //    break;
-                    //}
-                    string tempArtist = Program.openChildren[count].Text.Split('-')[0];
-                    string artist = tempArtist.Trim(' ');
-                    string tempAlbum = Program.openChildren[count].Text.Split('-')[1];
-                    string album = tempAlbum.Trim(' ');
-                    if (artist == artistToClose)
-                    {
-                        //Program.openChildren.Remove(Program.openChildren[count]);
+                //int openChildren = Program.openChildren.Length;
+                ////int openChildren = 0;
+                //for (int count = 0; count < openChildren; count++)
+                //{
+                //    //if (string.IsNullOrEmpty(Program.openChildren[count].Text))
+                //    //{
+                //    //    break;
+                //    //}
+                //    string tempArtist = Program.openChildren[count].Text.Split('-')[0];
+                //    string artist = tempArtist.Trim(' ');
+                //    string tempAlbum = Program.openChildren[count].Text.Split('-')[1];
+                //    string album = tempAlbum.Trim(' ');
+                //    if (artist == artistToClose)
+                //    {
+                //        //Program.openChildren.Remove(Program.openChildren[count]);
                         
-                        Program.openChildren[count].Close();
-                        Program.openChildren[count].Dispose();
-                        Program.openAlbums.Remove(album);
-                        Program.openChildren[count] = null;
-                    }
-                }
+                //        Program.openChildren[count].Close();
+                //        Program.openChildren[count].Dispose();
+                //        Program.openAlbums.Remove(album);
+                //        Program.openChildren[count] = null;
+                //    }
+                //}
                 //int childrenOpen = MdiChildren.Count();
                 //Program.openChildren = new frmChild[_frmMain.MdiChildren.Count()];
                 //Program.openChildren = _frmMain.MdiChildren.ToArray();
@@ -178,29 +178,29 @@ namespace MLMS
                     }
                 }
 
-                int openChildren = Program.openChildren.Length;
-                //int openChildren = 0;
-                //int test = _frmMain.MdiChildren.Count();
-                for (int count = 0; count < openChildren; count++)
-                {
-                    //if (string.IsNullOrEmpty(Program.openChildren[count].Text))
-                    //{
-                    //    break;
-                    //}
-                    string tempArtist = Program.openChildren[count].Text.Split('-')[0];
-                    string artist = tempArtist.Trim(' ');
-                    string tempAlbum = Program.openChildren[count].Text.Split('-')[1];
-                    string album = tempAlbum.Trim(' ');
-                    if (album == albumToClose)
-                    {
-                        //Program.openChildren.Remove(Program.openChildren[count]);
+                //int openChildren = Program.openChildren.Length;
+                ////int openChildren = 0;
+                ////int test = _frmMain.MdiChildren.Count();
+                //for (int count = 0; count < openChildren; count++)
+                //{
+                //    //if (string.IsNullOrEmpty(Program.openChildren[count].Text))
+                //    //{
+                //    //    break;
+                //    //}
+                //    string tempArtist = Program.openChildren[count].Text.Split('-')[0];
+                //    string artist = tempArtist.Trim(' ');
+                //    string tempAlbum = Program.openChildren[count].Text.Split('-')[1];
+                //    string album = tempAlbum.Trim(' ');
+                //    if (album == albumToClose)
+                //    {
+                //        //Program.openChildren.Remove(Program.openChildren[count]);
 
-                        Program.openChildren[count].Close();
-                        Program.openChildren[count].Dispose();
-                        //Program.openAlbums.Remove(album);
-                        Program.openChildren[count] = null;
-                    }
-                }
+                //        Program.openChildren[count].Close();
+                //        Program.openChildren[count].Dispose();
+                //        //Program.openAlbums.Remove(album);
+                //        Program.openChildren[count] = null;
+                //    }
+                //}
                
 
                 //foreach (frmChild toClose in Program.openChildren)
@@ -224,8 +224,8 @@ namespace MLMS
             //    }
             //}
             this.Close();
-            Program.openChildren = new frmChild[_frmMain.MdiChildren.Count()];
-            Program.openChildren = _frmMain.MdiChildren.ToArray();
+            //Program.openChildren = new frmChild[_frmMain.MdiChildren.Count()];
+            //Program.openChildren = _frmMain.MdiChildren.ToArray();
         }
         private void clearFrmChildren()
         {

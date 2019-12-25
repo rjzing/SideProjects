@@ -28,71 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvOutput = new System.Windows.Forms.DataGridView();
-            this.frmChildMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.frmChildOpenFileMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.frmChildOpenFile = new System.Windows.Forms.OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOutput)).BeginInit();
-            this.frmChildMenuStrip.SuspendLayout();
+            this.trvOutput = new System.Windows.Forms.TreeView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.frmChildAddAlbum = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgvOutput
+            // trvOutput
             // 
-            this.dgvOutput.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOutput.Location = new System.Drawing.Point(117, 98);
-            this.dgvOutput.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
-            this.dgvOutput.MultiSelect = false;
-            this.dgvOutput.Name = "dgvOutput";
-            this.dgvOutput.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOutput.Size = new System.Drawing.Size(1566, 453);
-            this.dgvOutput.TabIndex = 0;
+            this.trvOutput.Location = new System.Drawing.Point(57, 45);
+            this.trvOutput.Name = "trvOutput";
+            this.trvOutput.Size = new System.Drawing.Size(344, 319);
+            this.trvOutput.TabIndex = 0;
             // 
-            // frmChildMenuStrip
+            // menuStrip1
             // 
-            this.frmChildMenuStrip.AllowMerge = false;
-            this.frmChildMenuStrip.ImageScalingSize = new System.Drawing.Size(36, 36);
-            this.frmChildMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.frmChildOpenFileMenu});
-            this.frmChildMenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.frmChildMenuStrip.Name = "frmChildMenuStrip";
-            this.frmChildMenuStrip.Padding = new System.Windows.Forms.Padding(14, 4, 0, 4);
-            this.frmChildMenuStrip.Size = new System.Drawing.Size(1867, 49);
-            this.frmChildMenuStrip.TabIndex = 1;
-            this.frmChildMenuStrip.Text = "menuStrip1";
+            this.menuStrip1.AllowMerge = false;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.frmChildAddAlbum});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "frmChildMenStrip";
+            this.menuStrip1.Visible = false;
             // 
-            // frmChildOpenFileMenu
+            // frmChildAddAlbum
             // 
-            this.frmChildOpenFileMenu.Name = "frmChildOpenFileMenu";
-            this.frmChildOpenFileMenu.Size = new System.Drawing.Size(94, 41);
-            this.frmChildOpenFileMenu.Text = "&Open";
-            this.frmChildOpenFileMenu.Click += new System.EventHandler(this.frmChildOpenFileMenu_Click);
-            // 
-            // frmChildOpenFile
-            // 
-            this.frmChildOpenFile.FileName = "openFileDialog1";
-            this.frmChildOpenFile.Multiselect = true;
+            this.frmChildAddAlbum.Name = "frmChildAddAlbum";
+            this.frmChildAddAlbum.Size = new System.Drawing.Size(80, 20);
+            this.frmChildAddAlbum.Text = "&Add Album";
             // 
             // frmChild
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1867, 941);
-            this.Controls.Add(this.dgvOutput);
-            this.Controls.Add(this.frmChildMenuStrip);
-            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
-            this.MinimizeBox = false;
+            this.ClientSize = new System.Drawing.Size(800, 422);
+            this.Controls.Add(this.trvOutput);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmChild";
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmChild";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            //this.GotFocus += new System.EventHandler(this.frmChild_Focus);
-            //this.MdiChildActivate += new System.EventHandler(this.frmChild_mdiActivate);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.frmChild_MouseClick);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOutput)).EndInit();
-            this.frmChildMenuStrip.ResumeLayout(false);
-            this.frmChildMenuStrip.PerformLayout();
+            this.Text = "frmChildList";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,9 +78,8 @@
 
         #endregion
 
-        public System.Windows.Forms.DataGridView dgvOutput;
-        private System.Windows.Forms.MenuStrip frmChildMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem frmChildOpenFileMenu;
-        private System.Windows.Forms.OpenFileDialog frmChildOpenFile;
+        public System.Windows.Forms.TreeView trvOutput;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem frmChildAddAlbum;
     }
 }

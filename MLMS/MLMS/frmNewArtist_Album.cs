@@ -25,37 +25,55 @@ namespace MLMS
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            frmChild frmChildNewAA = new frmChild();
-            frmChildNewAA.MdiParent = _frmMain;
+            //frmChild frmChildNewAA = new frmChild();
+            //frmChildNewAA.MdiParent = _frmMain;
+            //if (!string.IsNullOrEmpty(txtArtist.Text) && !string.IsNullOrEmpty(txtAlbum.Text))
+            //{
+            //    frmChildNewAA.Text = txtArtist.Text + " - " + txtAlbum.Text;
+            //    frmChildNewAA.Show();
+            //    //Program.openChildren.Add(frmChildNewAA);
+            //    if (!Program.openArtists.Contains(txtArtist.Text))
+            //    {
+            //        Program.openArtists.Add(txtArtist.Text);
+            //    }
+            //    Program.openAlbums.Add(txtAlbum.Text);
+            //    this.Close();
+            //    Program.openChildren = new frmChild[_frmMain.MdiChildren.Count()];
+            //    Program.openChildren = _frmMain.MdiChildren.ToArray();
+            //}
+            //else if (!string.IsNullOrEmpty(txtArtist.Text) && string.IsNullOrEmpty(txtAlbum.Text))
+            //{
+            //    frmChildNewAA.Text = txtArtist.Text + " - " + "Unknown Album";
+            //    frmChildNewAA.Show();
+            //    //Program.openChildren.Add(frmChildNewAA);
+            //    Program.openArtists.Add(txtArtist.Text);
+            //    this.Close();
+            //    Program.openChildren = new frmChild[_frmMain.MdiChildren.Count()];
+            //    Program.openChildren = _frmMain.MdiChildren.ToArray();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Please enter an artist");
+            //}
+
             if (!string.IsNullOrEmpty(txtArtist.Text) && !string.IsNullOrEmpty(txtAlbum.Text))
             {
-                frmChildNewAA.Text = txtArtist.Text + " - " + txtAlbum.Text;
-                frmChildNewAA.Show();
-                //Program.openChildren.Add(frmChildNewAA);
                 if (!Program.openArtists.Contains(txtArtist.Text))
                 {
                     Program.openArtists.Add(txtArtist.Text);
+                    frmChild newChild = new frmChild();
+                    newChild.Text = txtArtist.Text;
+                    newChild.MdiParent = _frmMain;
+                    newChild.Show();
                 }
-                Program.openAlbums.Add(txtAlbum.Text);
                 this.Close();
-                Program.openChildren = new frmChild[_frmMain.MdiChildren.Count()];
-                Program.openChildren = _frmMain.MdiChildren.ToArray();
-            }
-            else if (!string.IsNullOrEmpty(txtArtist.Text) && string.IsNullOrEmpty(txtAlbum.Text))
-            {
-                frmChildNewAA.Text = txtArtist.Text + " - " + "Unknown Album";
-                frmChildNewAA.Show();
+                //frmChildNewAA.Text = txtArtist.Text + " - " + txtAlbum.Text;
+                //frmChildNewAA.Show();
                 //Program.openChildren.Add(frmChildNewAA);
-                Program.openArtists.Add(txtArtist.Text);
-                this.Close();
-                Program.openChildren = new frmChild[_frmMain.MdiChildren.Count()];
-                Program.openChildren = _frmMain.MdiChildren.ToArray();
+                //Program.openAlbums.Add(txtAlbum.Text);
+                //Program.openChildren = new frmChild[_frmMain.MdiChildren.Count()];
+                //Program.openChildren = _frmMain.MdiChildren.ToArray();
             }
-            else
-            {
-                MessageBox.Show("Please enter an artist");
-            }
-            
         }
     }
 }
