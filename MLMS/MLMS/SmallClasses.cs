@@ -17,7 +17,18 @@ namespace MLMS
             public string SongTitle { get; set; }
             public string Album { get; set; }
             public string Artists { get; set; }
-            
+
+            public override string ToString()
+            {
+                return "File Name: " + FileName + ", Track Number: " + TrackNumber.ToString() + ", Song Title: " 
+                    + SongTitle + ", On Album: " + Album + ", Contributing Artists: " + Artists;
+            }
+
+            public string TracksToString()
+            {
+                return "Track #: " + TrackNumber.ToString() + ", Tack Name: " + SongTitle;
+            }
+
         }
         public class SortTracks : IComparer<MP3>
         {
@@ -29,6 +40,11 @@ namespace MLMS
                 }
                 return x.TrackNumber.CompareTo(y.TrackNumber);
             }
+        }
+        public class AlbumsByArtist
+        {
+            public string artist { get; set; }
+            public string album { get; set; }
         }
     }
 }

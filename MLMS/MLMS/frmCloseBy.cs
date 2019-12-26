@@ -14,13 +14,14 @@ namespace MLMS
     {
         private string closingBy;
         private List<RadioButton> radBtns;
+        public frmMain _frmMain;
         public frmCloseBy(string selectedCloseBy)
         {
             closingBy = selectedCloseBy;
             radBtns = new List<RadioButton>();
             InitializeComponent();
         }
-
+        //test desktop
         private void frmCloseBy_Load(object sender, EventArgs e)
         {
             //this.rbtn0.AutoSize = true;
@@ -57,15 +58,6 @@ namespace MLMS
                     gbxCloseBy.Controls.Add(radBtn);
                     radBtns.Add(radBtn);
                     yLocation += 30;
-                    //counter++;
-                    //if (counter == 0)
-                    //{
-                    //    rbtn0.Text = artist;
-                    //}
-                    //else
-                    //{
-                    //    rbtn1.Text = artist;
-                    //}
                 }
             }
 
@@ -89,18 +81,8 @@ namespace MLMS
                     radBtns.Add(radBtn);
                     yLocation += 30;
                     //counter++;
-                    //if (counter == 0)
-                    //{
-                    //    rbtn0.Text = artist;
-                    //}
-                    //else
-                    //{
-                    //    rbtn1.Text = artist;
-                    //}
                 }
             }
-            //rbtn0.Text = Program.openArtists[0];
-            //rbtn1.Text = Program.openArtists[1];
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -122,17 +104,65 @@ namespace MLMS
                         break;
                     }
                 }
-                foreach (frmChild toClose in Program.openChildren)
-                {
-                    string tempArtist = toClose.Text.Split('-')[0];
-                    string artist = tempArtist.Trim(' ');
-                    if (artist == artistToClose)
-                    {
-                        //Program.openChildren.Remove(toClose);
-                        toClose.Close();
-                        toClose.Dispose();
-                    }
-                }
+                //foreach (frmChild toClose in Program.openChildren)
+                //{
+                //    string tempArtist = toClose.Text.Split('-')[0];
+                //    string artist = tempArtist.Trim(' ');
+                //    string tempAlbum = toClose.Text.Split('-')[1];
+                //    string album = tempAlbum.Trim(' ');
+                //    if (artist == artistToClose)
+                //    {
+                //        toClose.Close();
+                //        toClose.Dispose();
+                //        Program.openAlbums.Remove(album);
+                //    }
+                //}
+                //int openChildren = Program.openChildren.Length;
+                ////int openChildren = 0;
+                //for (int count = 0; count < openChildren; count++)
+                //{
+                //    //if (string.IsNullOrEmpty(Program.openChildren[count].Text))
+                //    //{
+                //    //    break;
+                //    //}
+                //    string tempArtist = Program.openChildren[count].Text.Split('-')[0];
+                //    string artist = tempArtist.Trim(' ');
+                //    string tempAlbum = Program.openChildren[count].Text.Split('-')[1];
+                //    string album = tempAlbum.Trim(' ');
+                //    if (artist == artistToClose)
+                //    {
+                //        //Program.openChildren.Remove(Program.openChildren[count]);
+                        
+                //        Program.openChildren[count].Close();
+                //        Program.openChildren[count].Dispose();
+                //        Program.openAlbums.Remove(album);
+                //        Program.openChildren[count] = null;
+                //    }
+                //}
+                //int childrenOpen = MdiChildren.Count();
+                //Program.openChildren = new frmChild[_frmMain.MdiChildren.Count()];
+                //Program.openChildren = _frmMain.MdiChildren.ToArray();
+                //openChildren = Program.openChildren.Count;
+                //for (int count = 0; count < openChildren; count++)
+                //{
+                //    if (string.IsNullOrEmpty(Program.openChildren[count].Text.Split('-')[0]))
+                //    {
+                //        break;
+                //    }
+                //    string tempArtist = Program.openChildren[count].Text.Split('-')[0];
+                //    string artist = tempArtist.Trim(' ');
+                //    string tempAlbum = Program.openChildren[count].Text.Split('-')[1];
+                //    string album = tempAlbum.Trim(' ');
+                //    if (artist == artistToClose)
+                //    {
+                //        Program.openChildren.Remove(Program.openChildren[count]);
+                //        Program.openChildren[count].Close();
+                //        Program.openChildren[count].Dispose();
+                //        Program.openAlbums.Remove(album);
+                //    }
+                //}
+
+                clearFrmChildren();
             }
 
             if (closingBy == "CloseByAlbum")
@@ -147,26 +177,72 @@ namespace MLMS
                         break;
                     }
                 }
-                foreach (frmChild toClose in Program.openChildren)
-                {
-                    string tempAlbum = toClose.Text.Split('-')[1];
-                    string album = tempAlbum.Trim(' ');
-                    if (album == albumToClose)
-                    {
-                        //Program.openChildren.Remove(toClose);
-                        toClose.Close();
-                        toClose.Dispose();
-                    }
-                }
-                for (int count = 0; count < Program.openChildren.Count; count++)
-                {
-                    if (Program.openChildren[count].Parent == null)
-                    {
-                        Program.openChildren.Remove(Program.openChildren[count]);
-                    }
-                }
+
+                //int openChildren = Program.openChildren.Length;
+                ////int openChildren = 0;
+                ////int test = _frmMain.MdiChildren.Count();
+                //for (int count = 0; count < openChildren; count++)
+                //{
+                //    //if (string.IsNullOrEmpty(Program.openChildren[count].Text))
+                //    //{
+                //    //    break;
+                //    //}
+                //    string tempArtist = Program.openChildren[count].Text.Split('-')[0];
+                //    string artist = tempArtist.Trim(' ');
+                //    string tempAlbum = Program.openChildren[count].Text.Split('-')[1];
+                //    string album = tempAlbum.Trim(' ');
+                //    if (album == albumToClose)
+                //    {
+                //        //Program.openChildren.Remove(Program.openChildren[count]);
+
+                //        Program.openChildren[count].Close();
+                //        Program.openChildren[count].Dispose();
+                //        //Program.openAlbums.Remove(album);
+                //        Program.openChildren[count] = null;
+                //    }
+                //}
+               
+
+                //foreach (frmChild toClose in Program.openChildren)
+                //{
+                //    string tempAlbum = toClose.Text.Split('-')[1];
+                //    string album = tempAlbum.Trim(' ');
+                //    if (album == albumToClose)
+                //    {
+                //        toClose.Close();
+                //        toClose.Dispose();
+                //    }
+                //    clearFrmChildren();
+                //}
+                //clearFrmChildren();
             }
+            //for (int count = 0; count < Program.openChildren.Count; count++)
+            //{
+            //    if (Program.openChildren[count].IsDisposed == true)
+            //    {
+            //        Program.openChildren.Remove(Program.openChildren[count]);
+            //    }
+            //}
             this.Close();
+            //Program.openChildren = new frmChild[_frmMain.MdiChildren.Count()];
+            //Program.openChildren = _frmMain.MdiChildren.ToArray();
+        }
+        private void clearFrmChildren()
+        {
+            //for (int count = 0; count < Program.openChildren.Count; count++)
+            //{
+            //    if (Program.openChildren[count].IsDisposed == true)
+            //    {
+            //        Program.openChildren.Remove(Program.openChildren[count]);
+            //    }
+            //}
+            //foreach (frmChild childForm in Program.openChildren)
+            //{
+            //    if (childForm.IsDisposed == true)
+            //    {
+            //        Program.openChildren.Remove(childForm);
+            //    }
+            //}
         }
     }
 }
