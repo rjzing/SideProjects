@@ -73,6 +73,12 @@
     <Compile Include="frmCloseBy.Designer.cs">
       <DependentUpon>frmCloseBy.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditAlbum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditAlbum.Designer.cs">
+      <DependentUpon>frmEditAlbum.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCloseBy.resx">
       <DependentUpon>frmCloseBy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditAlbum.resx">
+      <DependentUpon>frmEditAlbum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
