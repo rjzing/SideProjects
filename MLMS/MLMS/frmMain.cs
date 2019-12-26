@@ -407,6 +407,13 @@ namespace MLMS
                     }
                     newChild.trvOutput.Nodes[albumCounter].Nodes.Add(new TreeNode(tempMP3.TracksToString()));
                 }
+                Program.openChildren.Add(newChild);
+                var tempAlbumByArtist = new SmallClasses.AlbumsByArtist()
+                {
+                    artist = tempArtists,
+                    album = tempAlbum
+                };
+                Program.albumsByArtists.Add(tempAlbumByArtist);
             }
                 //int albumCounter = -1;
             //foreach (string album in albums)

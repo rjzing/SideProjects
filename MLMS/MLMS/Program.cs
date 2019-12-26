@@ -14,6 +14,7 @@ namespace MLMS
         public static List<frmChild> openChildren;
         public static List<string> openArtists;
         public static List<string> openAlbums;
+        public static List<SmallClasses.AlbumsByArtist> albumsByArtists;
         [STAThread]
         static void Main()
         {
@@ -22,6 +23,7 @@ namespace MLMS
             openChildren = new List<frmChild>();
             openArtists = new List<string>();
             openAlbums = new List<string>();
+            albumsByArtists = new List<SmallClasses.AlbumsByArtist>();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());

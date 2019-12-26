@@ -41,5 +41,10 @@ namespace MLMS
                 return x.TrackNumber.CompareTo(y.TrackNumber);
             }
         }
+        public class AlbumsByArtist
+        {
+            public string artist { get; set; }
+            public string album { get; set; }
+        }
     }
 }
