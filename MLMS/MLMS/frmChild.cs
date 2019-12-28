@@ -57,8 +57,11 @@ namespace MLMS
                     if (tempTrack.Artists == artistSelected && tempTrack.Album == selectedAlbum.Text)
                     {
                         tracksOnAlbum.Add(tempTrack);
+                        //editThisAlbum.tracksOnAlbum.Add(tempTrack);
                     }
                 }
+                editThisAlbum.tracksOnAlbum = new SmallClasses.MP3[tracksOnAlbum.Count];
+                editThisAlbum.tracksOnAlbum = tracksOnAlbum.ToArray();
                 Program.refreshDGVOnChild(tracksOnAlbum, editThisAlbum);
                 editThisAlbum.Show();
             }
