@@ -289,7 +289,9 @@ namespace MLMS
 
             if (Program.pcName == "DESKTOP-5M1CJVH")
             {
-                openFileDia.InitialDirectory = "D:\\";
+                //E:\\TestAlbum
+                //openFileDia.InitialDirectory = "D:\\";
+                openFileDia.InitialDirectory = "E:\\TestAlbum";
             }
             else
             {

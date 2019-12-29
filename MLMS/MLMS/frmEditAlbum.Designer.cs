@@ -71,20 +71,23 @@
             // moveUpContextMen
             // 
             this.moveUpContextMen.Name = "moveUpContextMen";
-            this.moveUpContextMen.Size = new System.Drawing.Size(138, 22);
+            this.moveUpContextMen.Size = new System.Drawing.Size(180, 22);
             this.moveUpContextMen.Text = "Move Up";
+            this.moveUpContextMen.Click += new System.EventHandler(this.moveUpContextMen_Click);
             // 
             // moveLastContextMen
             // 
             this.moveLastContextMen.Name = "moveLastContextMen";
-            this.moveLastContextMen.Size = new System.Drawing.Size(138, 22);
+            this.moveLastContextMen.Size = new System.Drawing.Size(180, 22);
             this.moveLastContextMen.Text = "Move Last";
+            this.moveLastContextMen.Click += new System.EventHandler(this.moveLastContextMen_Click);
             // 
             // moveDownContextMen
             // 
             this.moveDownContextMen.Name = "moveDownContextMen";
-            this.moveDownContextMen.Size = new System.Drawing.Size(138, 22);
+            this.moveDownContextMen.Size = new System.Drawing.Size(180, 22);
             this.moveDownContextMen.Text = "Move Down";
+            this.moveDownContextMen.Click += new System.EventHandler(this.moveDownContextMen_Click);
             // 
             // frmEditAlbum
             // 
