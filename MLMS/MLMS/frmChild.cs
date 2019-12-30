@@ -67,6 +67,11 @@ namespace MLMS
             }
 
         }
+        private void frmChild_Closing(object sender, EventArgs e)
+        {
+            Program.openArtists.Remove(Text);
+            Dispose();
+        }
         //messageCounter ++;
         //            if (tempArtistsFromFile != tempArtistsFromText && messageCounter == 0)
         //            {

@@ -88,6 +88,7 @@
             this.MainMenuStrip = this.frmChildMenuStrip;
             this.Name = "frmChild";
             this.Text = "frmChildList";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmChild_Closing);
             this.frmChildMenuStrip.ResumeLayout(false);
             this.frmChildMenuStrip.PerformLayout();
             this.frmChildContextMenu.ResumeLayout(false);

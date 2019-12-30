@@ -283,9 +283,6 @@ namespace MLMS
             OpenFileDialog openFileDia = frmMainOpenFile;
             List<string> filePaths = new List<string>();
             List<SmallClasses.MP3> tempSelectedFiles = new List<SmallClasses.MP3>();
-            //List<string> albums = new List<string>();
-            //List<string> tracks = new List<string>();
-            //string tempArtists = "";
             bool artistInFile = false;
 
             if (Program.pcName == "DESKTOP-5M1CJVH")
@@ -296,7 +293,8 @@ namespace MLMS
             }
             else
             {
-                openFileDia.InitialDirectory = "D:\\Downloads\\MP3\\TestAlbum";
+                //openFileDia.InitialDirectory = "D:\\Downloads\\MP3\\TestAlbum";
+                openFileDia.InitialDirectory = "D:\\Downloads\\MP3";
             }
             openFileDia.Filter = "(*.mp3)|*.mp3";
             openFileDia.FileName = "";
@@ -307,7 +305,7 @@ namespace MLMS
             }
             if (filePaths.Count > 0 && !string.IsNullOrEmpty(filePaths[0]))
             {
-                tempSelectedFiles = digestFilePaths(filePaths);
+                tempSelectedFiles = digestFilePaths(filePaths, true);
                 if (tempSelectedFiles == null)
                 {
                     artistInFile = false;
@@ -329,7 +327,7 @@ namespace MLMS
             }
         }
 
-        public List<SmallClasses.MP3> digestFilePaths(List<string> filePaths)
+        public static List<SmallClasses.MP3> digestFilePaths(List<string> filePaths, bool checkArtist)
         {
             List<SmallClasses.MP3> tempSelectedFiles = new List<SmallClasses.MP3>();
             string tempArtists = "";
@@ -356,14 +354,17 @@ namespace MLMS
                         tempArtists += tempTagLibFile.Tag.Performers[counter];
                     }
                 }
-                if (string.IsNullOrEmpty(tempArtists))
+                if (checkArtist)
                 {
-                    artistInFile = false;
-                    break;
-                }
-                else
-                {
-                    artistInFile = true;
+                    if (string.IsNullOrEmpty(tempArtists))
+                    {
+                        artistInFile = false;
+                        break;
+                    }
+                    else
+                    {
+                        artistInFile = true;
+                    }
                 }
                 rowCount++;
                 var tempMP3 = new SmallClasses.MP3()
@@ -383,14 +384,22 @@ namespace MLMS
                     Program.openArtists.Add(tempArtists);
                 }
             }
-            if (artistInFile)
+            if (checkArtist)
             {
-                return tempSelectedFiles;
+                if (artistInFile)
+                {
+                    return tempSelectedFiles;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {
-                return null;
+                return tempSelectedFiles;
             }
+            
         }
 
         public void setUpFrmChild(frmChild newChild, List<SmallClasses.MP3> tempSelectedFiles, SmallClasses.SortTracks sorting)

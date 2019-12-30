@@ -73,6 +73,7 @@ namespace MLMS
                     newChild.trvOutput.Nodes.Add(txtAlbum.Text);
                     newChild.trvOutput.EndUpdate();
                     newChild.MdiParent = _frmMain;
+                    newChild._frmMain = _frmMain;
                     newChild.Show();
                 }
                 else if (Program.openArtists.Contains(txtArtist.Text))
