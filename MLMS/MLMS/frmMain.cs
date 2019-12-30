@@ -283,9 +283,10 @@ namespace MLMS
             OpenFileDialog openFileDia = frmMainOpenFile;
             List<string> filePaths = new List<string>();
             List<SmallClasses.MP3> tempSelectedFiles = new List<SmallClasses.MP3>();
-            List<string> albums = new List<string>();
-            List<string> tracks = new List<string>();
-            string tempArtists = "";
+            //List<string> albums = new List<string>();
+            //List<string> tracks = new List<string>();
+            //string tempArtists = "";
+            bool artistInFile = false;
 
             if (Program.pcName == "DESKTOP-5M1CJVH")
             {
@@ -295,7 +296,7 @@ namespace MLMS
             }
             else
             {
-                openFileDia.InitialDirectory = "D:\\Downloads\\MP3";
+                openFileDia.InitialDirectory = "D:\\Downloads\\MP3\\TestAlbum";
             }
             openFileDia.Filter = "(*.mp3)|*.mp3";
             openFileDia.FileName = "";
@@ -306,145 +307,159 @@ namespace MLMS
             }
             if (filePaths.Count > 0 && !string.IsNullOrEmpty(filePaths[0]))
             {
-
-
-                frmChild newChild = new frmChild();
-
-                newChild.trvOutput.BeginUpdate();
-                newChild.trvOutput.Nodes.Clear();
-
-                //foreach (string individualPaths in filePaths)
-                //{
-                //    filePaths.Add(individualPaths);
-                //}
-                int rowCount = -1;
-                foreach (string paths in filePaths)
+                tempSelectedFiles = digestFilePaths(filePaths);
+                if (tempSelectedFiles == null)
                 {
-                    var tempTagLibFile = TagLib.File.Create(paths);
-                    string[] splitPaths = paths.Split('\\');
-                    int count = splitPaths.Length;
-                    string tempFileName = splitPaths[count - 1];
-                    string tempNameOfFile = tempFileName.Split('.')[0];
-                    int artistCount = tempTagLibFile.Tag.Performers.Length;
-                    tempArtists = "";
-                    for (int counter = 0; counter < artistCount; counter++)
+                    artistInFile = false;
+                }
+                else
+                {
+                    artistInFile = true;
+                }
+                if (artistInFile)
+                {
+                    frmChild newChild = new frmChild();
+                    SmallClasses.SortTracks sorting = new SmallClasses.SortTracks();
+                    setUpFrmChild(newChild, tempSelectedFiles, sorting);
+                }
+                else
+                {
+                    MessageBox.Show("Create new artist...");
+                }
+            }
+        }
+
+        public List<SmallClasses.MP3> digestFilePaths(List<string> filePaths)
+        {
+            List<SmallClasses.MP3> tempSelectedFiles = new List<SmallClasses.MP3>();
+            string tempArtists = "";
+            bool artistInFile = false;
+
+            int rowCount = -1;
+            foreach (string individualPaths in filePaths)
+            {
+                var tempTagLibFile = TagLib.File.Create(individualPaths);
+                string[] splitPaths = individualPaths.Split('\\');
+                int count = splitPaths.Length;
+                string tempFileName = splitPaths[count - 1];
+                string tempNameOfFile = tempFileName.Split('.')[0];
+                int artistCount = tempTagLibFile.Tag.Performers.Length;
+                tempArtists = "";
+                for (int counter = 0; counter < artistCount; counter++)
+                {
+                    if (counter + 1 != artistCount)
                     {
-                        if (counter + 1 != artistCount)
-                        {
-                            tempArtists += tempTagLibFile.Tag.Performers[counter] + ", ";
-                        }
-                        else
-                        {
-                            tempArtists += tempTagLibFile.Tag.Performers[counter];
-                        }
+                        tempArtists += tempTagLibFile.Tag.Performers[counter] + ", ";
                     }
+                    else
+                    {
+                        tempArtists += tempTagLibFile.Tag.Performers[counter];
+                    }
+                }
+                if (string.IsNullOrEmpty(tempArtists))
+                {
+                    artistInFile = false;
+                    break;
+                }
+                else
+                {
+                    artistInFile = true;
+                }
+                rowCount++;
+                var tempMP3 = new SmallClasses.MP3()
+                {
+                    OriginalRow = rowCount,
+                    FilePath = individualPaths,
+                    FileName = tempNameOfFile,
+                    TrackNumber = Convert.ToInt16(tempTagLibFile.Tag.Track),
+                    SongTitle = tempTagLibFile.Tag.Title,
+                    Album = tempTagLibFile.Tag.Album,
+                    Artists = tempArtists
+                };
+                tempSelectedFiles.Add(tempMP3);
+                if (!Program.openArtists.Contains(tempArtists))
+                {
+
+                    Program.openArtists.Add(tempArtists);
+                }
+            }
+            if (artistInFile)
+            {
+                return tempSelectedFiles;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void setUpFrmChild(frmChild newChild, List<SmallClasses.MP3> tempSelectedFiles, SmallClasses.SortTracks sorting)
+        {
+            int rowCount = -1;
+            string tempArtists = "";
+
+            newChild.trvOutput.BeginUpdate();
+            newChild.trvOutput.Nodes.Clear();
+
+            tempSelectedFiles.Sort(sorting);
+            var groupByAlbum = tempSelectedFiles.GroupBy(selectedFile => selectedFile.Album);
+            rowCount = -1;
+            string tempAlbum = "";
+            int albumCounter = -1;
+            foreach (var individualAlbum in groupByAlbum)
+            {
+                List<SmallClasses.MP3> individualAlbumTracks = new List<SmallClasses.MP3>();
+                if (string.IsNullOrEmpty(individualAlbum.Key))
+                {
+                    tempAlbum = "Unknown Album";
+                }
+                else
+                {
+                    tempAlbum = individualAlbum.Key;
+                }
+                albumCounter++;
+                newChild.trvOutput.Nodes.Add(new TreeNode(tempAlbum));
+
+                foreach (var tempFile in individualAlbum)
+                {
                     rowCount++;
                     var tempMP3 = new SmallClasses.MP3()
                     {
                         OriginalRow = rowCount,
-                        FilePath = paths,
-                        FileName = tempNameOfFile,
-                        TrackNumber = Convert.ToInt16(tempTagLibFile.Tag.Track),
-                        SongTitle = tempTagLibFile.Tag.Title,
-                        Album = tempTagLibFile.Tag.Album,
-                        Artists = tempArtists
+                        FilePath = tempFile.FilePath,
+                        FileName = tempFile.FileName,
+                        TrackNumber = tempFile.TrackNumber,
+                        SongTitle = tempFile.SongTitle,
+                        Album = tempAlbum,
+                        Artists = tempFile.Artists
                     };
-                    tempSelectedFiles.Add(tempMP3);
-                    if (!Program.openArtists.Contains(tempArtists))
+                    individualAlbumTracks.Add(tempMP3);
+                    Program.openTracks.Add(tempMP3);
+                    if (string.IsNullOrEmpty(tempFile.Artists))
                     {
-
-                        Program.openArtists.Add(tempArtists);
-                    }
-                }
-
-                //foreach (SmallClasses.MP3 file in tempSelectedFiles)
-                //{
-                //    newChildList.trvOutput.Nodes.Add(new TreeNode(file.ToString()));
-                //}
-                //foreach (SmallClasses.MP3 file in tempSelectedFiles)
-                //{
-                //    if (!albums.Contains(file.Album))
-                //    {
-                //        albums.Add(file.Album);
-                //    }
-                //}
-
-                SmallClasses.SortTracks sorting = new SmallClasses.SortTracks();
-                tempSelectedFiles.Sort(sorting);
-                var groupByAlbum = tempSelectedFiles.GroupBy(selectedFile => selectedFile.Album);
-                rowCount = -1;
-                string tempAlbum = "";
-                int albumCounter = -1;
-                foreach (var individualAlbum in groupByAlbum)
-                {
-                    List<SmallClasses.MP3> individualAlbumTracks = new List<SmallClasses.MP3>();
-                    if (string.IsNullOrEmpty(individualAlbum.Key))
-                    {
-                        tempAlbum = "Unknown Album";
+                        tempArtists = "Unknown Artist";
                     }
                     else
                     {
-                        tempAlbum = individualAlbum.Key;
+                        tempArtists = tempFile.Artists;
                     }
-                    albumCounter++;
-                    newChild.trvOutput.Nodes.Add(new TreeNode(tempAlbum));
-
-                    foreach (var tempFile in individualAlbum)
-                    {
-                        rowCount++;
-                        var tempMP3 = new SmallClasses.MP3()
-                        {
-                            OriginalRow = rowCount,
-                            FilePath = tempFile.FilePath,
-                            FileName = tempFile.FileName,
-                            TrackNumber = tempFile.TrackNumber,
-                            SongTitle = tempFile.SongTitle,
-                            Album = tempAlbum,
-                            Artists = tempFile.Artists
-                        };
-                        individualAlbumTracks.Add(tempMP3);
-                        Program.openTracks.Add(tempMP3);
-                        if (string.IsNullOrEmpty(tempFile.Artists))
-                        {
-                            tempArtists = "Unknown Artist";
-                        }
-                        else
-                        {
-                            tempArtists = tempFile.Artists;
-                        }
-                        newChild.trvOutput.Nodes[albumCounter].Nodes.Add(new TreeNode(tempMP3.TracksToString()));
-                    }
-                    Program.openChildren.Add(newChild);
-                    var tempAlbumByArtist = new SmallClasses.AlbumsByArtist()
-                    {
-                        artist = tempArtists,
-                        album = tempAlbum
-                    };
-                    Program.albumsByArtists.Add(tempAlbumByArtist);
+                    newChild.trvOutput.Nodes[albumCounter].Nodes.Add(new TreeNode(tempMP3.TracksToString()));
                 }
-                //int albumCounter = -1;
-                //foreach (string album in albums)
-                //{
-                //    //albumCounter++;
-                //    //newChildList.trvOutput.Nodes.Add(new TreeNode(album));
-                //    foreach (SmallClasses.MP3 individualFile in tempSelectedFiles)
-                //    {
-                //        if (individualFile.Album == album)
-                //        {
-                //            //newChildList.trvOutput.Nodes[albumCounter].Nodes.Add(new TreeNode(individualFile.TracksToString()));
-                //            //newChildList.trvOutput.Parent.Name = album;
-                //            //newChildList.trvOutput.Nodes.Add(new TreeNode(individualFile.SongTitle));
-                //        }
-                //    }
-                //}
-
-                newChild.trvOutput.EndUpdate();
-                newChild.MdiParent = this;
-                newChild._frmMain = this;
-                newChild.Text = tempArtists;
                 Program.openChildren.Add(newChild);
-                newChild.Show();
+                var tempAlbumByArtist = new SmallClasses.AlbumsByArtist()
+                {
+                    artist = tempArtists,
+                    album = tempAlbum
+                };
+                Program.albumsByArtists.Add(tempAlbumByArtist);
             }
+
+            newChild.trvOutput.EndUpdate();
+            newChild.MdiParent = this;
+            newChild._frmMain = this;
+            newChild.Text = tempArtists;
+            Program.openChildren.Add(newChild);
+            newChild.Show();
         }
     }
 }

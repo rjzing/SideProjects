@@ -84,3 +84,4 @@ D:\GitHub\SideProjects\MLMS\MLMS\obj\Debug\MLMS.csproj.CopyComplete
 D:\GitHub\SideProjects\MLMS\MLMS\obj\Debug\MLMS.exe
 D:\GitHub\SideProjects\MLMS\MLMS\obj\Debug\MLMS.pdb
 C:\LocalGitHub\SideProjects\MLMS\MLMS\obj\Debug\MLMS.frmEditAlbum.resources
+D:\GitHub\SideProjects\MLMS\MLMS\obj\Debug\MLMS.frmEditAlbum.resources

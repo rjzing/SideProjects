@@ -26,7 +26,7 @@ namespace MLMS
 
             public string TracksToString()
             {
-                return "Track #: " + TrackNumber.ToString() + ", Tack Name: " + SongTitle;
+                return "File Name: " + FileName + ", Track #: " + TrackNumber.ToString() + ", Tack Title: " + SongTitle;
             }
 
         }
